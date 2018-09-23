@@ -35,10 +35,10 @@ RxPos = [Xmin + (Xmax-Xmin)*rand...
     Zmin + (Zmax-Zmin)*rand];
 
 % Define standard deviation in range noise
-range_std = 0.3;
+range_std = 0.1;
 
 % Select a subset of beacons
-BeacInd = unique(randi([1 Nb],5,1)); % Selecting at most 5 beacons
+BeacInd = unique(randi([1 Nb],7,1)); % Selecting at most 5 beacons
 BeacInRange = BeaconPos(BeacInd,:)
 
 % Generate true range from all beacons
@@ -64,9 +64,13 @@ GridRes = 0.05;
 %   Residue     : 1x1 matrix with residue error - this is an approx indication of
 %                   confidence of measurement
 [EstPos, Residue] = grid_search_solver(BeaconPos, [BeacInd MeasuredRange], GridRes, BoundingBox);
+[EstPos2] = gradient_descent_solver(BeaconPos, [BeacInd MeasuredRange]);
+
+
 RxPos
 EstPos
-Residue
+EstPos2
+%Residue
 % -------------- Plot results ---------------------------------------
 figure; hold on;
 scatter3(BeaconPos(:,1),BeaconPos(:,2),BeaconPos(:,3),100,'filled','MarkerFaceColor',[0.6 0.6 0.6],'MarkerEdgeColor',[0.6 0.6 0.6]);
@@ -75,6 +79,8 @@ axis equal; grid on;
 xlabel('x'); ylabel('y'); zlabel('z');
 scatter3(RxPos(1),RxPos(2),RxPos(3),'g');
 scatter3(EstPos(1), EstPos(2), EstPos(3),'r');
+scatter3(EstPos2(1), EstPos2(2), EstPos2(3),'c*');
+
 legend({'Beacons not in range';'Beacons in range';'True Pos';'Est Pos'});
 set(gca,'fontsize',14);
 title('3D plot of true and estimated locations');
