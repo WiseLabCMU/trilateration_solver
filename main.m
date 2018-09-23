@@ -35,10 +35,10 @@ RxPos = [Xmin + (Xmax-Xmin)*rand...
     Zmin + (Zmax-Zmin)*rand];
 
 % Define standard deviation in range noise
-range_std = 0.1;
+range_std = 0.3;
 
 % Select a subset of beacons
-BeacInd = unique(randi([1 Nb],7,1)); % Selecting at most 5 beacons
+BeacInd = unique(randi([1 Nb],5,1)); % Selecting at most 5 beacons
 BeacInRange = BeaconPos(BeacInd,:)
 
 % Generate true range from all beacons
