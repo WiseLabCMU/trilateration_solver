@@ -1,13 +1,13 @@
 # trilateration_solver
 
-1) Power on the LinkSys router that hosts "cantTouchThis" network. Password: 1d0ntkn0w!
+1) Power on the LinkSys router that hosts "cantTouchThis" network. Password: on the router
 2) Connect "johnpi" Rpi to the router
 3) Turn on mud + all nodes (aesir, bohr, day, earth..)
 
 Upon starup, johnpi.local starts hosting the MQTT server.
 Upon startup, mud.local runs a script that ranges to nodes 0-3. To make it range to more nodes, 
 modify in .bashrc - the line that is calling the ranging script with parameter "4" 
-To log into mud.local: pi@mud.local, password: Jucjf!3EK2E4bH3z
+To log into mud.local: pi@mud.local, password: J***z
 
 Upon startup, each beacon listens for ranging packets and respond. Each beacon has been programed with its ID (0, 1, 2..)
 
